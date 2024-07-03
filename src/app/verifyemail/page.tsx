@@ -55,7 +55,7 @@ export default function VerifyEmailPage() {
         {error && (
           <div className="flex flex-col items-center mt-4">
             <h2 className=" bg-red-500 p-2 text-xl  text-black rounded-md mb-4">Invalid / Expired Token</h2>
-            <p className="text-[15px] text-center">If you didn't receive an email, please check your spam folder or request a new verification link.</p>
+            <p className="text-[15px] text-center">If you did not receive an email, please check your spam folder or request a new verification link.</p>
             <div className="flex flex-col items-center mt-4">
             <Link href="/login" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition ease-in-out duration-300">
               Go to Login Anyway
