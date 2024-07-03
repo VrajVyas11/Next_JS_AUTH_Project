@@ -1,113 +1,105 @@
-import Image from "next/image";
+"use client"
+
+import Link from "next/link"
 
 export default function Home() {
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="bg-gray-700 pt-10 px-10">
+      <section className="py-10 md:py-16 md:pb-2 sm:py-4 bg-black rounded-[40px]">
+        <div className="container max-w-screen-xl mx-auto px-4">
+          <nav className="flex items-center justify-between mb-10">
+            <img className="bg-white h-15 rounded-full p-1 bg-opacity-70" src="/navbar-logo.png" alt="Logo" />
+            <div className="">
+              <Link href="/signup">
+                <button
+                  className="px-7 py-3 md:px-9 md:py-4 border-white border font-medium md:font-semibold text-white text-md rounded-md hover:bg-white hover:text-black transition ease-linear duration-500">
+                  Sign Up
+                </button>
+              </Link>
+              <Link href="/login">
+                <button
+                  className="px-7 ml-6 py-3 md:px-9 md:py-4 bg-white font-medium md:font-semibold text-gray-700 text-md rounded-md hover:bg-gray-700 hover:text-white transition ease-linear duration-500">
+                  Login
+                </button>
+              </Link>
+            </div>
+          </nav>
+          <h1 className="w-full text-center font-serif text-[40px] tracking-widest mb-0">Next.JS </h1>
+          <h1 className="w-full text-center font-serif text-[40px] tracking-widest mb-10">Authentication Demo</h1>
+          <div className="text-center px-10">
+            <div className="flex flex-row items-center w-full justify-between p-4 px-6 bg-white bg-opacity-20 rounded-full">
+              <div className="flex justify-center w-fit h-fit p-3 bg-white rounded-full">
+                <img className="h-28 w-28 md:h-28 md:w-28 sm:h-14 sm:w-14 size-fit" src="/next.svg" alt="Image" />
+              </div>
+              <div className="flex justify-center w-fit h-fit p-3 bg-white bg-opacity-20 rounded-full">
+                <img className="h-28 w-28 md:h-28 md:w-28 sm:h-14 sm:w-14 size-fit" src="/mailtrap.svg" alt="Image" />
+              </div>
+              <div className="flex justify-center w-fit h-fit p-5 bg-white rounded-full">
+                <img className="h-24 w-24 md:h-24 md:w-24 sm:h-10 sm:w-10 size-fit" src="/mongodb.png" alt="Image" />
+              </div>
+              <div className="flex justify-center w-fit h-fit p-7 bg-white bg-opacity-20 rounded-full">
+                <img className="h-20 w-20 md:h-20 md:w-20 sm:h-6 sm:w-6 size-fit" src="/tailwind.png" alt="Image" />
+              </div>
+              <div className="flex justify-center w-fit h-fit p-7 bg-white rounded-full">
+                <img className="h-20 w-20 md:h-20 md:w-20 sm:h-6 sm:w-6 size-fit" src="/nodejs.png" alt="Image" />
+              </div>
+            </div>
+            <div className="px-8 py-10 rounded-md">
+              <h1 className="font-medium  text-justify text-gray-500 text-lg md:text-lg uppercase mb-8 flex">
+                Welcome to Our Secure Authentication System
+                Our app, built with Next.js, Nodemailer, Tailwind CSS, MongoDB, and Mailtrap, ensures secure and efficient user authentication.
+              </h1>
+              <div className="flex flex-row justify-center gap-3">
+                <div className="p-1 h-fit w-10 bg-emerald-500 rounded-full">
+                  <img className="size-fit bg-white rounded-full" src="/icon.png" />
+                </div>
+                <h1 className="font-medium text-center  text-white text-2xl md:text-3xl uppercase">Key features:</h1>
+              </div>
+              <section className="py-10 md:py-10">
+                <div className="container max-w-screen-xl mx-auto px-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="bg-gray-50 px-8 pt-4 rounded-md h-fit">
+                      <h4 className="font-bold  text-gray-700 text-lg mb-4"> User Authentication:
+                        <p className="font-medium  text-gray-500 text-md">Handles login, signup, and logout securely.<br /></p>
+                      </h4>
+                    </div>
+                    <div className="bg-gray-50 px-8 pt-4 rounded-md h-fit">
+                      <h4 className="font-bold  text-gray-700 text-lg mb-4"> Email Verification:
+                        <p className="font-medium  text-gray-500 text-md">Sends verification emails via Mailtrap.<br /></p>
+                      </h4>
+                    </div>
+                    <div className="bg-gray-50 px-8 pt-4 rounded-md h-fit">
+                      <h4 className="font-bold  text-gray-700 text-lg mb-4"> Password Reset:
+                        <p className="font-medium  text-gray-500 text-md">Allows password recovery through email.<br /></p>
+                      </h4>
+                    </div>
+                    <div className="bg-gray-50 px-8 pt-4 rounded-md h-fit">
+                      <h4 className="font-bold  text-gray-700 text-lg mb-4"> Token Management:
+                        <p className="font-medium  text-gray-500 text-md">Uses tokens for secure session management.<br /></p>
+                      </h4>
+                    </div>
+                    <div className="bg-gray-50 px-8 pt-4 rounded-md h-fit">
+                      <h4 className="font-bold  text-gray-700 text-lg mb-4"> Secure Routes:
+                        <p className="font-medium  text-gray-500 text-md">Protects all routes, accessible only to logged-in users.<br /></p>
+                      </h4>
+                    </div>
+                    <div className="bg-gray-50 px-8 pt-4 rounded-md h-fit">
+                      <h4 className="font-bold  text-gray-700 text-lg mb-4"> Good Design:
+                        <p className="font-medium  text-gray-500 text-md">Offers a user-friendly interface with Tailwind CSS.<br /></p>
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <p className="font-normal  text-center text-gray-500 text-md md:text-xl">
+                Our app provides a reliable and secure solution for managing user authentication and protecting sensitive data.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        {/* <div className="flex justify-end items-end px-4 opacity-45">~ Vraj Vyas</div> */}
+      </section>
+    </div>
   );
 }
