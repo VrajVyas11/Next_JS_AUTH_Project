@@ -8,26 +8,26 @@ export default function VerifyEmailPage() {
   const [verified, setVerified] = useState(false);
   const [error, setError] = useState(false);
 
-  const verifyUserEmail = async () => {
-    try {
-      await axios.post("/api/users/verifyemail", { token });
-      setVerified(true);
-    } catch (error: any) {
-      setError(true);
-      console.log(error.message);
-    }
-  };
-
   useEffect(() => {
     const urlToken = window.location.search.split("=")[1];
     setToken(urlToken || "");
   }, []);
 
   useEffect(() => {
+    const verifyUserEmail = async () => {
+      try {
+        await axios.post("/api/users/verifyemail", { token });
+        setVerified(true);
+      } catch (error:any) {
+        setError(true);
+        console.log(error.message);
+      }
+    };
+
     if (token.length > 0) {
       verifyUserEmail();
     }
-  }, [token]);
+  }, [token]); // Only re-run the effect if `token` changes
 
   return (
     <div style={{ background: `url("/bgimg.jpg")`, backgroundSize: "cover", backgroundPosition: "center" }} className="flex w-full h-full flex-col items-center justify-center min-h-screen py-2 text-white">
@@ -57,10 +57,10 @@ export default function VerifyEmailPage() {
             <h2 className=" bg-red-500 p-2 text-xl  text-black rounded-md mb-4">Invalid / Expired Token</h2>
             <p className="text-[15px] text-center">If you did not receive an email, please check your spam folder or request a new verification link.</p>
             <div className="flex flex-col items-center mt-4">
-            <Link href="/login" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition ease-in-out duration-300">
-              Go to Login Anyway
-            </Link>
-          </div>
+              <Link href="/login" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition ease-in-out duration-300">
+                Go to Login Anyway
+              </Link>
+            </div>
           </div>
         )}
       </div>
