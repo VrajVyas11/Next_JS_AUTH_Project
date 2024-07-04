@@ -28,13 +28,13 @@ Check out the live demo [here](https://next-js-auth-project.onrender.com/).
 
 ![Laptop View](./livedemoimages/10.png)
 
-![Laptop View](./livedemoimages/11.png)
-
 ![Laptop View](./livedemoimages/12.png)
 
 ![Laptop View](./livedemoimages/13.png)
 
 ![Laptop View](./livedemoimages/14.png)
+
+![Laptop View](./livedemoimages/15.png)
 
 ## Getting Started
 
