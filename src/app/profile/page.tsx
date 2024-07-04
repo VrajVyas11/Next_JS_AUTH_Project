@@ -58,7 +58,7 @@ export default function ProfilePage() {
                 >
                     Logout
                 </button>
-            
+
             </div>
         </div>
     )

@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
         const { token } = reqBody
 
         const user = await User.findOne({ forgotpasswordToken: token, 
-            // forgotpasswordTokenExpiry: { $gt: Date.now() } 
+            forgotpasswordTokenExpiry: { $gt: Date.now() } 
         })
 
         if (!user) {

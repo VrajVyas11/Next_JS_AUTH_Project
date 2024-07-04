@@ -1,7 +1,7 @@
 "use client";
 import * as yup from 'yup';
 import Link from "next/link";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -17,15 +17,15 @@ export default function SignUpPage() {
     password: yup.string().required('Please enter a password').min(8, 'Letters should be more 8'),
   });
 
-  const onSignUp = async (values:any) => {
+  const onSignUp = async (values: any) => {
     try {
       setLoading(true);
       const response = await axios.post("/api/users/signup", values);
       console.log("this is response in sign up", response);
       router.push("/verifyemail");
-    } catch (error:any) {
+    } catch (error: any) {
       console.log("failure at signup");
-      toast.error(error.message );
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
@@ -34,7 +34,7 @@ export default function SignUpPage() {
   return (
     <div style={{ background: `url("/bgimg.jpg")`, backgroundSize: "cover", backgroundPosition: "center" }} className="flex w-full h-full flex-col items-center justify-center min-h-screen py-2">
       <div className="flex w-fit h-fit flex-col md:flex-row items-center justify-between p-4 px-6 bg-white bg-opacity-60 rounded-3xl">
-      <img src="/signup.svg" className="w-full md:w-1/2 h-72 md:h-auto" style={{ background: `url("/login.svg")`, backgroundSize: "cover", backgroundPosition: "center" }} alt="login illustration" />
+        <img src="/signup.svg" className="w-full md:w-1/2 h-72 md:h-auto" style={{ background: `url("/login.svg")`, backgroundSize: "cover", backgroundPosition: "center" }} alt="login illustration" />
         <Formik
           initialValues={{ username: '', email: '', password: '' }}
           validationSchema={schema}
@@ -51,10 +51,10 @@ export default function SignUpPage() {
 
               <div className="flex flex-row items-center w-72 justify-start py-1 pl-2 pr-1 bg-white bg-opacity-20 rounded-lg ">
                 <img className=" text-center h-7 w-7 font-serif text-black mr-3 ml-1" src="/user.png" alt="username icon" />
-                <Field id="username" name="username" type="text" className="rounded-lg p-2 text-black" placeholder="Username" /> 
+                <Field id="username" name="username" type="text" className="rounded-lg p-2 text-black" placeholder="Username" />
               </div>
               <ErrorMessage name="username" component="div" className="text-red-500 text-sm" />
-              <br/>
+              <br />
 
 
               <div className="flex flex-row items-center w-72 justify-start  py-1 pl-2 pr-1 bg-white bg-opacity-20 rounded-lg ">
@@ -62,7 +62,7 @@ export default function SignUpPage() {
                 <Field id="email" name="email" type="text" className="rounded-lg p-2 text-black" placeholder="Email" />
               </div>
               <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
-              <br/>
+              <br />
 
 
               <div className="flex flex-row items-center w-72 justify-start py-1 pl-2 pr-1 bg-white bg-opacity-20 rounded-lg ">
@@ -70,7 +70,7 @@ export default function SignUpPage() {
                 <Field id="password" name="password" type="password" className="rounded-lg p-2 text-black" placeholder="Password" />
               </div>
               <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
-              <br/>
+              <br />
 
 
               <button
@@ -84,7 +84,7 @@ export default function SignUpPage() {
             </Form>
           )}
         </Formik>
-       
+
       </div>
     </div>
   );

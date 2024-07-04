@@ -3,24 +3,23 @@
 import * as yup from 'yup';
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation"; // corrected import to 'next/router'
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 
 export default function VerifyPasswordPage() {
-  const router = useRouter();
-  const [loading, setLoading] = useState(false); // corrected initial state to false
+  const [loading, setLoading] = useState(false);
   const [verified, setVerified] = useState(false);
   const [error, setError] = useState(false);
   const [passwordChanged, setPasswordChanged] = useState(false);
   const [token, setToken] = useState<string>("");
   const [showToken, setShowToken] = useState(false);
 
-  const schema = yup.object().shape({
-    password: yup.string().required('Please enter a password').min(8, 'Password must be at least 8 characters'),
-    confirmPassword: yup.string().oneOf([yup.ref('password')], 'Passwords must match')
-  });
+  useEffect(() => {
+    if (verified && !passwordChanged) {
+      toast.success("Token is Verified");
+    }
+  }, [verified])
 
   useEffect(() => {
     const urlToken = new URLSearchParams(window.location.search).get("token");
@@ -33,13 +32,19 @@ export default function VerifyPasswordPage() {
     }
   }, []);
 
+  const schema = yup.object().shape({
+    password: yup.string().required('Please enter a password').min(8, 'Password must be at least 8 characters'),
+    confirmPassword: yup.string().oneOf([yup.ref('password')], 'Passwords must match')
+  });
+
+
   const verifyPasswordToken = async (token: string) => {
     try {
       const response = await axios.post("/api/users/verifypassword", { token });
       console.log("Verify Token Response:", response.data);
       setVerified(true);
-    } catch (error:any) {
-      if(error.response?.data?.error === "Invalid Token") {
+    } catch (error: any) {
+      if (error.response?.data?.error === "Invalid Token") {
         setError(true);
         toast.error("Invalid or Expired Token");
       } else {
@@ -56,10 +61,10 @@ export default function VerifyPasswordPage() {
       await axios.post("/api/users/forgotpassword", { token, password: values.password });
       setPasswordChanged(true);
       toast.success("Password reset successfully!");
-    } catch (error:any) {
-      if(error.response?.data?.error === "New Password Can't be the same as Old Password") {
+    } catch (error: any) {
+      if (error.response?.data?.error === "New Password Can't be the same as Old Password") {
         toast.error("New Password Can't be the same as Old Password");
-      } else if(error.response?.data?.error === "Invalid Token") {
+      } else if (error.response?.data?.error === "Invalid Token") {
         toast.error("Invalid Token");
       } else {
         setError(true);
@@ -72,13 +77,8 @@ export default function VerifyPasswordPage() {
     setShowToken((prev) => !prev);
   };
 
-  console.log("Loading:", loading);
-  console.log("Error:", error);
-  console.log("Verified:", verified);
-  console.log("Password Changed:", passwordChanged);
-
   if (loading) {
-    return <p>Loading...</p>; // Show a loading message while verifying the token
+    return <p>Loading...</p>;
   }
 
   if (error) {
@@ -93,14 +93,10 @@ export default function VerifyPasswordPage() {
     );
   }
 
-  useEffect(()=>{
-    if(verified && !passwordChanged){
-      toast.success("Token is Verified");
-    }
-  },[verified])
+
   if (verified && !passwordChanged) {
 
-  
+
 
     return (
       <div style={{ background: `url("/bgimg.jpg")`, backgroundSize: "cover", backgroundPosition: "center" }} className="flex w-full h-full flex-col items-center justify-center min-h-screen py-2 text-white">
@@ -127,7 +123,7 @@ export default function VerifyPasswordPage() {
                   <Field id="password" name="password" type="password" className="rounded-lg p-2 text-black w-full bg-white bg-opacity-20" placeholder="New Password" />
                 </div>
                 <ErrorMessage name="password" component="div" className="text-red-500 text-sm mb-4" />
-                <br/>
+                <br />
                 <div className="flex flex-row items-center w-96 justify-start  py-1 pl-2 pr-1 bg-white bg-opacity-20 rounded-lg">
                   <img className="text-center h-7 w-7 font-serif text-black mr-3 ml-1" src="/password.png" alt="password icon" />
                   <Field id="confirmPassword" name="confirmPassword" type="password" className="rounded-lg p-2 text-black w-full bg-white bg-opacity-20" placeholder="Confirm New Password" />
@@ -172,14 +168,14 @@ export default function VerifyPasswordPage() {
 
   return (
     <div className='justify-center items-center flex m-48 '>
-    <div className="flex flex-col items-center justify-center w-fit p-6 px-16 bg-gray-800 bg-opacity-90 rounded-3xl">
-    <div className="flex justify-center w-fit h-fit p-3 bg-white rounded-full mb-4">
-      <img className="h-16 w-16 size-fit" src="/user.png" alt="User" />
-    </div>
-    <h1 className="text-4xl mb-4">Reset Password</h1>
+      <div className="flex flex-col items-center justify-center w-fit p-6 px-16 bg-gray-800 bg-opacity-90 rounded-3xl">
+        <div className="flex justify-center w-fit h-fit p-3 bg-white rounded-full mb-4">
+          <img className="h-16 w-16 size-fit" src="/user.png" alt="User" />
+        </div>
+        <h1 className="text-4xl mb-4">Reset Password</h1>
 
-    <p className="text-lg text-gray-700 mt-4 mb-8 bg-yellow-400 rounded-lg px-3">A link has been sent to your email. Please click the link to verify.</p>
-    </div>
+        <p className="text-lg text-gray-700 mt-4 mb-8 bg-yellow-400 rounded-lg px-3">A link has been sent to your email. Please click the link to verify.</p>
+      </div>
     </div>
   )
 }

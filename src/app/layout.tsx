@@ -1,4 +1,4 @@
-import { EmailProvider } from "../context/index";
+import { EmailProvider } from "@/context";
 import "./globals.css";
 import { Toaster } from 'react-hot-toast';
 import type { Metadata } from "next";

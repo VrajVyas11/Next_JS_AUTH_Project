@@ -10,8 +10,8 @@ export async function POST(request: NextRequest) {
     try {
         console.log("here at start")
         const reqBody = await request.json()
-        const {email, password } = reqBody
-        console.log("here at backend",reqBody)
+        const { email, password } = reqBody
+        console.log("here at backend", reqBody)
         const user = await User.findOne({ email })
 
         if (!user) {
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
         const response = NextResponse.json({
             message: "User Logged in successfully",
             success: true,
-            isVerified:user.isVerified
+            isVerified: user.isVerified
         })
 
         response.cookies.set("token", token, {

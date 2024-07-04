@@ -9,7 +9,7 @@ connect()
 export async function POST(request: NextRequest) {
     try {
         const reqBody = await request.json()
-        const { token,password } = reqBody
+        const { token, password } = reqBody
 
         const user = await User.findOne({ forgotpasswordToken: token })
 
@@ -19,11 +19,11 @@ export async function POST(request: NextRequest) {
 
         console.log(user)
         const comparePassword = await bcryptjs.compare(password, user.password)
-        if(comparePassword){
+        if (comparePassword) {
             return NextResponse.json({ error: "New Password Can't be the same as Old Password" }, { status: 401 })
         }
-        const crypt= await bcryptjs.genSalt(10)
-const hashedPassword= await bcryptjs.hash(password,crypt)
+        const crypt = await bcryptjs.genSalt(10)
+        const hashedPassword = await bcryptjs.hash(password, crypt)
 
         user.password = hashedPassword
         await user.save()

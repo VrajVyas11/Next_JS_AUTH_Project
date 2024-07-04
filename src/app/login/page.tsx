@@ -21,18 +21,18 @@ export default function LoginPage() {
     try {
       setLoading(true);
       const response = await axios.post("/api/users/login", values);
-      if(response.data.isVerified){
+      if (response.data.isVerified) {
         console.log("this is response in login", response);
         toast.success("Login Successful", { duration: 2000 });
         router.push("/profile");
       }
-      else{
+      else {
         console.log("this is response in else login", response);
         toast.error("Please verify your Email first", { duration: 2000 });
       }
 
     } catch (error: any) {
-      console.log("failure at login",error.response.data.error);
+      console.log("failure at login", error.response.data.error);
       toast.error(error.response.data.error, { duration: 3000 });
     } finally {
       setLoading(false);
@@ -42,7 +42,7 @@ export default function LoginPage() {
   return (
     <div style={{ background: `url("/bgimg.jpg")`, backgroundSize: "cover", backgroundPosition: "center" }} className="flex w-full h-full flex-col items-center justify-center min-h-screen py-2">
       <div className="flex w-fit h-fit flex-col md:flex-row items-center justify-between p-4 px-6 bg-white bg-opacity-60 rounded-3xl">
-   
+
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={schema}
@@ -61,15 +61,15 @@ export default function LoginPage() {
                 <Field id="email" name="email" type="text" className="rounded-lg p-2 text-black" placeholder="Email" />
               </div>
               <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
-              <br/>
+              <br />
 
               <div className="flex flex-row items-center w-72 justify-start  py-1 pl-2 pr-1 bg-white bg-opacity-20 rounded-lg">
                 <img className="text-center h-7 w-7 font-serif text-black mr-3 ml-1" src="/password.png" alt="password icon" />
                 <Field id="password" name="password" type="password" className="rounded-lg p-2 text-black" placeholder="Password" />
               </div>
               <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
-              <br/>
-              
+              <br />
+
               <Link className="underline text-base mt-3 text-blue-200 hover:text-blue-400" href="/verifypassword">Forgot Password?</Link>
               <button
                 type="submit"
@@ -78,9 +78,7 @@ export default function LoginPage() {
               >
                 {loading ? "Processing" : "Login"}
               </button>
-{/* <div className=' flex w-full flex-col justify-center itmes-center'> */}
               <Link className="underline text-base mt-3 text-blue-200 hover:text-blue-400" href="/signup">SignUp Page</Link>
-              {/* </div> */}
             </Form>
           )}
         </Formik>

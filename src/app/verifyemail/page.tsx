@@ -18,7 +18,7 @@ export default function VerifyEmailPage() {
       try {
         await axios.post("/api/users/verifyemail", { token });
         setVerified(true);
-      } catch (error:any) {
+      } catch (error: any) {
         setError(true);
         console.log(error.message);
       }
@@ -27,7 +27,7 @@ export default function VerifyEmailPage() {
     if (token.length > 0) {
       verifyUserEmail();
     }
-  }, [token]); // Only re-run the effect if `token` changes
+  }, [token]);
 
   return (
     <div style={{ background: `url("/bgimg.jpg")`, backgroundSize: "cover", backgroundPosition: "center" }} className="flex w-full h-full flex-col items-center justify-center min-h-screen py-2 text-white">

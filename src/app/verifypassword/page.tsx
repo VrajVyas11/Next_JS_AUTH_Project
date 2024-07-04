@@ -23,11 +23,11 @@ const EmailRequestPage = () => {
       await axios.post("/api/users/validateemail", { email: values.email });
       setEmail(values.email);
       toast.success("Password reset link sent to your email");
-      router.push("/verifypassword/token"); // This would be handled by your backend
+      router.push("/verifypassword/token");
     } catch (error: any) {
       toast.error(error.response?.data?.error || "Failed to request password reset");
     }
-    finally{
+    finally {
       setLoading(false);
     }
   };
@@ -39,9 +39,9 @@ const EmailRequestPage = () => {
           <img className="h-16 w-16 size-fit" src="/user.png" alt="User" />
         </div>
         <h1 className="text-4xl mb-4">Verify Email</h1>
-        {/* <h1 className="text-4xl mb-4">Request Password Reset</h1> */}
+
         <Formik
-        
+
           initialValues={{ email: '' }}
           validationSchema={schema}
           onSubmit={onRequestPasswordReset}
@@ -59,7 +59,7 @@ const EmailRequestPage = () => {
                 disabled={(!(isValid && dirty) || loading)}
               >
                 {loading ? "Processing" : "Request Password Reset"}
-                
+
               </button>
               <Link className="underline text-lg mt-3 text-blue-200 hover:text-blue-400" href="/login">Go to Login</Link>
             </Form>

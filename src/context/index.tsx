@@ -1,6 +1,5 @@
 "use client"
 
-//this is only here so that if someone wants to use it then they know how to use it
 import { createContext, useState, useContext, ReactNode } from "react";
 
 type EmailContextType = {
