@@ -1,6 +1,5 @@
-# Open Chat
-
-Open Chat is a real-time messaging application that enables seamless communication between users. Built with modern web technologies, it offers a smooth and responsive user experience across different devices.
+# Authentication Application
+Next.js Authentication Project is a comprehensive web application designed to handle user authentication processes seamlessly. It features functionalities such as user registration, login, password reset, and email verification, ensuring a secure and user-friendly experience.
 
 ## Live Demo
 
